@@ -4,6 +4,7 @@ title: Privacy Policy
 
 # Migi Privacy Policy
 
+<!-- Before publishing: replace {{EFFECTIVE_DATE}} with the publish date, e.g. 4 October 2026. -->
 Effective {{EFFECTIVE_DATE}}
 
 Migi helps you pick up everyday Japanese on your iPhone and Apple Watch. It works without
@@ -12,7 +13,7 @@ the app does with information, and your choices.
 
 ## Who we are
 
-Migi is made by {{OWNER_LEGAL_NAME}}, an individual developer based in Australia ("we",
+Migi is made by Trisha Kuek, an individual developer based in Australia ("we",
 "us"). For anything about privacy, email **tk@hellomigi.com**.
 
 ## The short version
