@@ -40,16 +40,3 @@ In the app: **Settings → Share anonymous stats**, and **Settings → Delete my
 **I think some Japanese is wrong.**
 Open the item and tap **Report a problem**. It's taken off your widgets straight away while we
 check it. Thank you; this really helps.
-
-## Credits
-
-The app's Japanese content uses:
-
-- **JMdict and KANJIDIC2**, from the Electronic Dictionary Research and Development Group.
-  {{EDRDG_ATTRIBUTION}} (copy the exact wording the EDRDG licence asks for).
-- Example sentences from **[Tatoeba](https://tatoeba.org)** (CC BY 2.0 FR).
-- Word frequencies from **[TUBELEX](https://github.com/naist-nlp/tubelex)** (BSD-3-Clause;
-  {{TUBELEX_NOTICE}}: copy its copyright notice) and **[wordfreq](https://github.com/rspeer/wordfreq)**
-  by Robyn Speer (data CC BY-SA 4.0).
-
-Our curated content dataset is published under CC BY-SA 4.0: {{DATASET_LINK}}.

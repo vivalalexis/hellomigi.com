@@ -4,8 +4,7 @@ title: Privacy Policy
 
 # Migi Privacy Policy
 
-<!-- Before publishing: replace {{EFFECTIVE_DATE}} with the publish date, e.g. 4 October 2026. -->
-Effective {{EFFECTIVE_DATE}}
+Effective 4 October 2026
 
 Migi helps you pick up everyday Japanese on your iPhone and Apple Watch. It works without
 an account, and it's designed to know as little about you as possible. This policy explains what
