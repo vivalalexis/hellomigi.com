@@ -2,13 +2,6 @@
 title: Privacy Policy
 ---
 
-<!--
-DRAFT. Fill in every {{PLACEHOLDER}} before publishing. Claude wrote this from the app's design
-docs; it isn't legal advice. See docs/PRIVACY-CHECK.md for the open points.
-{{OWNER_LEGAL_NAME}}: your legal name, as the seller on the App Store
-{{EFFECTIVE_DATE}}: the date this version is published
--->
-
 # Migi Privacy Policy
 
 Effective {{EFFECTIVE_DATE}}

@@ -4,4 +4,4 @@ Source for https://hellomigi.com, the website for Migi: Everyday Japanese. It's 
 GitHub Pages (Jekyll, default settings).
 
 The pages are copies of `site/` in the app repo, which is the source of truth: edit them there
-first, then copy them here. Pages: `/` (index.md), `/support/` and `/privacy/`.
+first, then copy them here without the `<!-- DRAFT -->` comments. Pages: `/` (index.md), `/support/` and `/privacy/`.

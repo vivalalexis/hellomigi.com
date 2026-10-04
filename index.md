@@ -2,9 +2,6 @@
 title: "Migi"
 ---
 
-<!-- DRAFT landing page. The App Store link works once the app is released; swap the text link
-for Apple's official "Download on the App Store" badge at launch. -->
-
 # Migi
 
 **Japanese that finds you.** Everyday Japanese on your Home Screen, Lock Screen and Apple

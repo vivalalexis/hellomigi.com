@@ -2,8 +2,6 @@
 title: Support
 ---
 
-<!-- DRAFT. Fill in the credit placeholders below before publishing. -->
-
 # Migi Support
 
 Email **tk@hellomigi.com**. A person reads every message, usually within a few days.
