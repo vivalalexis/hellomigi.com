@@ -1,0 +1,6 @@
+title: Migi
+description: Everyday Japanese on your iPhone and Apple Watch.
+theme: jekyll-theme-primer
+permalink: pretty
+exclude:
+  - README.md
