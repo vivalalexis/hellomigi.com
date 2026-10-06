@@ -2,8 +2,5 @@ title: Migi
 description: Everyday Japanese on your iPhone and Apple Watch.
 theme: jekyll-theme-primer
 permalink: pretty
-# Jekyll skips dot-folders by default; Apple needs /.well-known/apple-app-site-association.
-include:
-  - .well-known
 exclude:
   - README.md
