@@ -38,8 +38,8 @@ senders to be able to show that people agreed to their emails.
 
 **Stopping misuse:** to stop the form being flooded, we allow only a few sign-ups an hour from each
 internet connection. For this we keep a scrambled version of the IP address of each sign-up (a
-salted hash), never the IP address itself. These records are deleted once they're a day old, the
-next time someone signs up.
+salted hash), never the IP address itself. These records are deleted once
+they're a day old.
 
 ## What you'll get
 
@@ -64,7 +64,8 @@ any. It sends what you enter only to our own sign-up service on Supabase.
 ## Unsubscribing
 
 Every email we send you has a one-click unsubscribe link. It takes you off
-the list straight away and removes your address from Resend. You can also email
+the list straight away and removes your address from Resend, unless you also get emails from
+the Migi app. You can also email
 tk@hellomigi.com, and we'll take you off within 5 working days.
 
 ## How long we keep it
