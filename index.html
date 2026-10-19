@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Migi · Everyday Japanese on your Lock Screen, widgets and Apple Watch</title>
+<meta name="description" content="Everyday Japanese words and phrases on your Lock Screen, widgets and Apple Watch, with quick one-tap checks. Coming to iPhone and Apple Watch.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://hellomigi.com/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://hellomigi.com/">
+<meta property="og:title" content="Migi: Japanese that shows up where you already look">
+<meta property="og:description" content="Everyday Japanese on your Lock Screen, widgets and Apple Watch. Coming to iPhone and Apple Watch.">
+<meta property="og:image" content="https://hellomigi.com/assets/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Migi","alternateName":"Migi: Everyday Japanese","operatingSystem":"iOS, watchOS","applicationCategory":"EducationalApplication","url":"https://hellomigi.com/","description":"Everyday Japanese words and phrases on your Lock Screen, widgets and Apple Watch, with quick one-tap checks."}</script>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+  // Pinned scroll story only with JS and without Reduce Motion; otherwise the scenes sit in normal flow.
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('scrolly');
+</script>
+<style>
+  /* Light assets in light mode, dark assets in dark mode (logo, icon, widgets, sun) */
+  .dk { display: none !important; }
+  :root[data-theme="dark"] .lt { display: none !important; } :root[data-theme="dark"] .dk { display: block !important; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .lt { display: none !important; } :root:not([data-theme="light"]) .dk { display: block !important; } }
+
+  /* Hero */
+  .hero { padding: var(--s6) 0 var(--s6); display: grid; gap: var(--s4); }
+  .brand { display: flex; align-items: center; gap: 14px; grid-column: 1 / -1; }   /* one lockup: mark, then wordmark */
+  .brand .mark { height: 52px; width: auto; } .brand .wm { height: 15px; width: auto; }
+  .foot .wm { height: 13px; width: auto; }
+  h1 { font-size: clamp(36px, 5.6vw, 64px); line-height: 1.03; letter-spacing: -.025em; font-weight: 600; max-width: 15ch; margin-top: var(--s5); }
+  .sub { font-size: 19px; color: var(--ink-2); max-width: 40ch; }
+  .jump { font-size: 15px; font-weight: 500; color: var(--ink); }
+
+  /* The day */
+  .day { --n: 5; position: relative; }
+  .pin { position: relative; }
+  .sky, .clock { display: none; }
+  .scene { display: grid; gap: var(--s5); padding: var(--s7) 0; border-bottom: 1px solid var(--rule); }
+  .cap .when { font-size: 15px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .cap b { display: block; font-size: clamp(24px, 3vw, 34px); font-weight: 600; letter-spacing: -.015em; line-height: 1.1; margin-top: var(--s1); }
+  .cap p { color: var(--ink-2); max-width: 36ch; margin-top: var(--s3); font-size: 17px; }
+  .mock { display: flex; justify-content: center; align-items: center; position: relative; }
+
+  /* Pinned scroll story */
+  .scrolly .day { height: calc(var(--n) * 130vh + 100vh); }
+  .scrolly .pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+  .scrolly .scene { position: absolute; inset: 0; border: 0; pointer-events: none; z-index: 2;
+    grid-template-rows: auto auto; align-content: start; gap: var(--s5); padding: calc(var(--s7) + 20px) var(--s4) var(--s6); max-width: 1120px; margin: 0 auto; }
+  .scrolly .scene.on { pointer-events: auto; }
+  .scrolly .cap .when { display: none; }   /* the pinned clock already says it */
+  .scrolly .cap { opacity: var(--cap, 0); transform: translateY(calc((1 - var(--mock, 0)) * 40px - var(--out, 0) * 30px)); }
+  .scrolly .mock { opacity: calc(var(--mock, 0) * (1 - var(--out, 0)));
+    transform: translateY(calc((1 - var(--mock, 0)) * 40px - var(--out, 0) * 30px)) scale(calc(.96 + var(--mock, 0) * .04)); }
+  .scrolly .sky { display: block; position: absolute; z-index: 1; left: 0; right: 0; top: 34%; bottom: 10%; }
+  .sky .sunclip { position: absolute; inset: 0; overflow: hidden; }   /* the sun sets below the horizon */
+  .sky .sun { position: absolute; left: 0; top: 0; width: 170px; height: 170px; will-change: transform; }
+  .sky .sun img { width: 100%; height: 100%; }
+  .sky .horizon { position: absolute; left: 0; right: 0; bottom: 0; border-top: 1px solid var(--ink); }
+  .scrolly .clock { display: block; position: absolute; z-index: 3; left: var(--s4); top: var(--s5); font-size: 22px; font-weight: 600; letter-spacing: -.01em; }
+  .clock small { font-size: 15px; font-weight: 400; color: var(--ink-2); margin-left: var(--s2); }
+
+  /* iPhone, Lock Screen top half */
+  .iphone { width: 290px; border-radius: 50px 50px 0 0; padding: 10px 10px 0; background: #0E1412; position: relative;
+    -webkit-mask-image: linear-gradient(#000 75%, transparent); mask-image: linear-gradient(#000 75%, transparent); }
+  .iphone .scr { height: 330px; border-radius: 41px 41px 0 0; overflow: hidden; position: relative; color: #fff;
+    font-family: -apple-system, "SF Pro Text", system-ui, sans-serif; background: radial-gradient(120% 80% at 70% 10%, #4B5D55, #24302B 60%, #18201D); }
+  .island { position: absolute; top: 10px; left: 50%; translate: -50% 0; width: 92px; height: 27px; border-radius: 20px; background: #000; }
+  .status { display: flex; justify-content: space-between; align-items: center; padding: 14px 26px 0 30px; height: 44px; font-size: 14px; font-weight: 600; }
+  .status svg { height: 11px; width: auto; fill: #fff; }
+  .lockdate { text-align: center; font-size: 17px; font-weight: 600; margin-top: 16px; opacity: .92; }
+  .locktime { text-align: center; font-size: 84px; font-weight: 700; letter-spacing: -.02em; line-height: 1; margin-top: 2px; font-family: -apple-system, "SF Pro Display", system-ui, sans-serif; }
+  .acc-rect { width: 172px; margin: 12px auto 0; padding: 6px 10px; border-radius: 14px; background: rgba(255,255,255,.14); line-height: 1.2; }
+  .acc-rect .h { font-size: 17px; font-weight: 600; } .acc-rect .c { font-size: 12px; } .acc-rect .c2 { font-size: 12px; opacity: .65; }
+  .home .scr { height: 360px; }
+  .home .widget { display: flex; justify-content: center; margin-top: 12px; }
+  .home .widget img { width: 240px; height: auto; }
+  .apps { display: grid; grid-template-columns: repeat(4, 50px); justify-content: center; gap: 16px 12px; margin-top: 16px; }
+  .apps i { width: 50px; height: 50px; border-radius: 12px; background: rgba(255,255,255,.16); display: block; }
+  .apps figure { display: grid; justify-items: center; gap: 4px; font-size: 11px; }
+  .apps img { width: 50px; height: 50px; border-radius: 12px; }
+
+  /* Apple Watch: the real watchOS face from the Simulator, in a case */
+  .aw { width: 240px; margin: 54px 0; border-radius: 62px; padding: 14px; position: relative; background: linear-gradient(145deg, #3A433F, #121816 55%, #2A322F); box-shadow: 0 30px 60px -30px rgba(14,20,18,.6), inset 0 0 0 1px rgba(255,255,255,.08); }
+  .aw::before { content: ""; position: absolute; right: -9px; top: 70px; width: 11px; height: 44px; border-radius: 5px; background: repeating-linear-gradient(#5B6560 0 2px, #3A433F 2px 4px); }
+  .aw::after { content: ""; position: absolute; right: -5px; top: 132px; width: 6px; height: 46px; border-radius: 3px; background: #2C3431; }
+  .aw img { display: block; width: 100%; height: auto; border-radius: 48px; }
+  .band { position: absolute; left: 50%; translate: -50% 0; width: 170px; height: 70px; background: #222A27; z-index: -1; }
+  .band.t { top: -54px; border-radius: 18px 18px 6px 6px; } .band.b { bottom: -54px; border-radius: 6px 6px 18px 18px; }
+
+  /* Widget sizes: small, medium, large (real renders) */
+  /* On a slice of Home Screen wallpaper, so the paper-coloured widgets keep their edges */
+  .sizes { display: flex; gap: var(--s4); align-items: flex-end; padding: var(--s5); border-radius: 36px;
+    background: radial-gradient(120% 90% at 70% 0%, #4B5D55, #24302B 60%, #18201D); }
+  .sizes figcaption { color: rgba(255,255,255,.75) !important; }
+  .sizes figure { display: grid; gap: var(--s2); justify-items: center; }
+  .sizes figcaption { font-size: 13px; color: var(--ink-2); letter-spacing: .04em; }
+  .sizes img { height: auto; border-radius: 0; }
+  .sizes .s img { width: 110px; } .sizes .m img, .sizes .l img { width: 236px; }
+
+  /* Notifications (EXPERIENCE §3.4), the box only */
+  .notifs { display: grid; gap: 10px; width: min(380px, 100%); }
+  .notif { padding: 14px; border-radius: 24px; display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: start;
+    font-family: -apple-system, "SF Pro Text", system-ui, sans-serif; font-size: 15px; line-height: 1.3; color: #1A2420;
+    background: rgba(255,255,255,.78); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); box-shadow: 0 14px 34px -16px rgba(14,20,18,.35); }
+  :root[data-theme="dark"] .notif { background: rgba(58,66,62,.86); color: #ECEDEA; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .notif { background: rgba(58,66,62,.86); color: #ECEDEA; } }
+  .notif img { width: 40px; height: 40px; border-radius: 10px; }
+  .notif b { font-weight: 600; display: block; }
+  .notif .now { font-size: 13px; opacity: .55; }
+
+  .device-shadow { filter: drop-shadow(0 28px 36px rgba(14,20,18,.26)); }
+
+  /* Waitlist at the end */
+  .join { padding: var(--s8) 0 var(--s6); display: grid; gap: var(--s5); }
+  .join h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -.02em; line-height: 1.08; max-width: 18ch; }
+  .thanks { display: none; font-size: 17px; }
+  .form.sent .thanks { display: block; } .form.sent .field, .form.sent .check, .form.sent .error { display: none; }
+  .error { color: var(--dot); }
+  .btn:disabled { opacity: .6; }
+
+  @media (min-width: 900px) {
+    .hero { grid-template-columns: minmax(0, 1fr) auto; align-items: end; padding: var(--s6) 0 var(--s5); }
+    .scene { grid-template-columns: minmax(0, 32ch) auto; justify-content: center; align-items: center; column-gap: var(--s7); }
+    .scrolly .scene { grid-template-rows: auto; align-content: start; padding: 9vh var(--s4) var(--s6); }
+    .scrolly .mock { justify-content: flex-start; }
+    .scrolly .sky { left: 47%; right: 2%; top: 0; bottom: 30%; }   /* sun stays in the mockup column, off the caption */
+    .sky .sun { width: 300px; height: 300px; }
+    .scrolly .clock { top: auto; bottom: var(--s6); font-size: 56px; }
+    .clock small { display: block; margin: var(--s1) 0 0; font-size: 17px; }
+    .iphone { width: 310px; } .iphone .scr { height: 350px; }
+    .aw { width: 280px; } .band { width: 200px; }
+    .join { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+  }
+  @media (max-width: 899px) {
+    /* A: small + medium side by side, large below */
+    .wl-a { display: grid; grid-template-columns: auto auto; grid-template-areas: "s m" "l l"; justify-content: center; gap: var(--s3); padding: var(--s4); }
+    .wl-a .s { grid-area: s; } .wl-a .m { grid-area: m; } .wl-a .l { grid-area: l; }
+    .wl-a .s img { width: 92px; } .wl-a .m img { width: 198px; } .wl-a .l img { width: 220px; }
+  }
+</style></head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="brand">
+      <img class="mark lt" src="assets/mark-light.png" alt="みぎ" width="510" height="351"><img class="mark dk" src="assets/mark-dark.png" alt="みぎ" width="510" height="351">
+      <img class="wm lt" src="assets/wordmark-light.png" alt="Migi" width="287" height="49"><img class="wm dk" src="assets/wordmark-dark.png" alt="Migi" width="287" height="49">
+    </div>
+    <h1>Japanese that shows up where you already look.</h1>
+    <div style="display:grid;gap:var(--s3)">
+      <p class="sub">Everyday words and phrases on your Lock Screen, widgets and Apple Watch. Glance at them a few times a day. Now and then, one tap checks what's sticking.</p>
+      <a class="jump" href="#join">Get one email when Migi launches ↓</a>
+    </div>
+  </header>
+</div>
+
+<section class="day" id="day" aria-label="A day with Migi">
+  <div class="pin">
+    <div class="sky" aria-hidden="true"><div class="sunclip"><div class="sun" id="sun"><img class="lt" src="assets/sun-light.svg" alt=""><img class="dk" src="assets/sun-dark.svg" alt=""></div></div><div class="horizon"></div></div>
+    <div class="clock" aria-hidden="true"><span id="clock">7:40</span><small id="where">Leaving home</small></div>
+
+    <article class="scene" data-min="460" data-sun="470" data-where="Leaving home">
+      <div class="cap"><span class="when">7:40 · Leaving home</span><b>Lock Screen</b><p>A word under the clock. Glance, then go.</p></div>
+      <div class="mock device-shadow"><div class="iphone"><div class="scr">
+        <div class="island"></div>
+        <div class="status"><span></span><span><svg viewBox="0 0 64 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/><rect x="38" y="1" width="22" height="10" rx="3" fill="none" stroke="#fff" stroke-width="1.2"/><rect x="40" y="3" width="15" height="6" rx="1.5"/><rect x="61" y="4" width="2" height="4" rx="1"/></svg></span></div>
+        <div class="lockdate">Monday 19 October</div>
+        <div class="locktime">7:40</div>
+        <div class="acc-rect" role="img" aria-label="Migi Lock Screen widget: 行ってきます, ittekimasu, I'm off."><div class="h">行ってきます</div><div class="c">ittekimasu</div><div class="c2">I'm off. (leaving home)</div></div>
+      </div></div></div>
+    </article>
+
+    <article class="scene" data-min="485" data-sun="640" data-where="Coffee stop">
+      <div class="cap"><span class="when">8:05 · Coffee stop</span><b>Home Screen widgets</b><p>Small, medium or large. The bigger the widget, the more it shows: the large one adds an example sentence.</p></div>
+      <div class="mock"><div class="sizes wl-a">
+        <figure class="s" style="--k:0"><img class="lt" src="assets/img/wakaru-small-light.png" alt="Small Migi widget: わかる, wakaru, to understand" width="316" height="315"><img class="dk" src="assets/img/wakaru-small-dark.png" alt="Small Migi widget: わかる, wakaru, to understand" width="316" height="315"><figcaption>Small</figcaption></figure>
+        <figure class="m" style="--k:1"><img class="lt" src="assets/img/wakaru-medium-light.png" alt="Medium Migi widget: わかる, wakaru, to understand" width="676" height="315"><img class="dk" src="assets/img/wakaru-medium-dark.png" alt="Medium Migi widget: わかる, wakaru, to understand" width="676" height="315"><figcaption>Medium</figcaption></figure>
+        <figure class="l" style="--k:2"><img class="lt" src="assets/img/wakaru-large-light.png" alt="Large Migi widget: わかる, wakaru, to understand, with the example 行き方わかる？ Do you know how to get there?" width="676" height="708"><img class="dk" src="assets/img/wakaru-large-dark.png" alt="Large Migi widget: わかる, wakaru, to understand, with the example 行き方わかる？ Do you know how to get there?" width="676" height="708"><figcaption>Large</figcaption></figure>
+      </div></div>
+    </article>
+
+    <article class="scene" data-min="515" data-sun="820" data-where="On the train">
+      <div class="cap"><span class="when">8:35 · On the train</span><b>Apple Watch</b><p>The word sits on your watch face, so checking the time means seeing some Japanese.</p></div>
+      <div class="mock"><div class="aw"><i class="band t"></i><img src="assets/img/watch-face.png" alt="Apple Watch face with the Migi complication: またね, mata ne, See you." width="416" height="496"><i class="band b"></i></div></div>
+    </article>
+
+    <article class="scene" data-min="1090" data-sun="1030" data-where="Walking home">
+      <div class="cap"><span class="when">18:10 · Walking home</span><b>Notifications, if you want them</b><p>A word, or a quick check, delivered quietly. Off unless you turn them on.</p></div>
+      <div class="mock"><div class="notifs">
+        <div class="notif" style="--k:0" role="img" aria-label="Migi notification: ありがとう, arigatō. Thanks."><img class="lt" src="assets/icon-light.png" alt=""><img class="dk" src="assets/icon-dark.png" alt=""><div><b>ありがとう · arigatō</b>Thanks.</div><span class="now">now</span></div>
+        <div class="notif" style="--k:1" role="img" aria-label="Migi notification: わかる, wakaru, means… Open Migi to answer."><img class="lt" src="assets/icon-light.png" alt=""><img class="dk" src="assets/icon-dark.png" alt=""><div><b>わかる · wakaru means…</b>Open Migi to answer.</div><span class="now">now</span></div>
+      </div></div>
+    </article>
+
+    <article class="scene" data-min="1260" data-sun="1240" data-where="On the couch">
+      <div class="cap"><span class="when">21:00 · On the couch</span><b>A one-tap check</b>
+        <p>Seeing a word helps. Picking its meaning from memory helps more: quick checks like this are retrieval practice.</p></div>
+      <div class="mock device-shadow"><div class="iphone home"><div class="scr">
+        <div class="island"></div>
+        <div class="status"><span>21:00</span><span><svg viewBox="0 0 64 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/><rect x="38" y="1" width="22" height="10" rx="3" fill="none" stroke="#fff" stroke-width="1.2"/><rect x="40" y="3" width="6" height="6" rx="1.5"/><rect x="61" y="4" width="2" height="4" rx="1"/></svg></span></div>
+        <div class="widget">
+          <img class="lt" src="assets/img/wakaru-quiz-light.png" alt="Migi widget quiz: わかる means… to understand, to forget, to remember" width="676" height="315">
+          <img class="dk" src="assets/img/wakaru-quiz-dark.png" alt="Migi widget quiz: わかる means… to understand, to forget, to remember" width="676" height="315">
+        </div>
+        <div class="apps"><figure><img class="lt" src="assets/icon-light.png" alt=""><img class="dk" src="assets/icon-dark.png" alt=""><span>Migi</span></figure><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div></div></div>
+    </article>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="join" id="join">
+    <h2>Get one email when Migi launches</h2>
+    <form class="form" id="waitlist" action="https://npsybdtpcyjynzvjjqnk.supabase.co/functions/v1/waitlist" method="post">
+      <p class="small">We'll send it when Migi is on the App Store, with the link.</p>
+      <div class="field"><input type="email" name="email" aria-label="Email address" placeholder="you@example.com" autocomplete="email" required><button class="btn">Notify me</button></div>
+      <label class="check"><input type="checkbox" name="updates"> Also send me occasional updates (a few a year).</label>
+      <input class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" name="website">
+      <input type="hidden" name="ref">
+      <p class="error small" role="alert" hidden></p>
+      <p class="thanks" role="status">You're on the list. We'll email you once, when Migi is on the App Store.</p>
+      <p class="small">Unsubscribe any time, in one click. Your email is only used for this. <a href="/waitlist-privacy/">Privacy notice</a></p>
+      <p class="small">Coming to iPhone and Apple Watch.</p>
+    </form>
+  </section>
+  <footer class="foot"><span><img class="wm lt" src="assets/wordmark-light.png" alt="Migi" width="287" height="49"><img class="wm dk" src="assets/wordmark-dark.png" alt="Migi" width="287" height="49"></span><span class="small">© 2026 Migi</span></footer>
+</div>
+
+<script>
+(() => {
+  if (!document.documentElement.classList.contains('scrolly')) return;
+  const day = document.getElementById('day'), sky = document.querySelector('.sky'), sun = document.getElementById('sun');
+  const clockEl = document.getElementById('clock'), whereEl = document.getElementById('where'), horizon = document.querySelector('.horizon');
+  const scenes = [...document.querySelectorAll('.scene')], N = scenes.length, phone = matchMedia('(max-width: 899px)');
+  const RISE = 410, SET = 1130;                                   // sunrise 6:50, sunset 18:50 (minutes)
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), seg = (t, a, b) => clamp((t - a) / (b - a));
+  const ease = t => 1 - Math.pow(1 - t, 3), fmt = m => `${Math.floor(m / 60)}:${String(Math.floor(m % 60 / 5) * 5).padStart(2, '0')}`;
+  let cur = 0, goal = 0, ticking = false;
+
+  function goalFromScroll() {
+    const range = day.offsetHeight - innerHeight;
+    goal = clamp(-day.getBoundingClientRect().top / range, 0, 1) * (N - 1e-3);
+  }
+  function placeSun(m) {
+    const W = sky.clientWidth, H = sky.clientHeight, s = sun.clientWidth, p = (m - RISE) / (SET - RISE);
+    const pc = clamp(p), lift = (H - s * .55) * Math.pow(Math.sin(Math.PI * pc), 1.4);
+    const sink = p > 1 ? clamp((p - 1) * 6) * s : p < 0 ? s : 0;
+    sun.style.transform = `translate(${(W - s) * pc}px, ${H - s * .5 - lift + sink}px)`;
+  }
+  function render(p) {
+    const i = Math.min(N - 1, Math.floor(p)), t = p - i;
+    scenes.forEach((s, k) => {
+      const on = k === i, last = k === N - 1;
+      const inP = on ? (k === 0 ? 1 : ease(seg(t, 0, .3))) : 0;      // caption and mockup arrive together
+      const out = on && !last ? ease(seg(t, .8, 1)) : 0;
+      s.style.setProperty('--cap', inP * (1 - out)); s.style.setProperty('--mock', inP); s.style.setProperty('--out', out);
+      s.classList.toggle('on', on);
+    });
+    // The sun moves continuously and passes each scene's own time at the scene's midpoint.
+    const j = clamp(Math.floor(p - .5), 0, N - 1), u = clamp(p - .5 - j);
+    const a = +scenes[j].dataset.sun, b = +(scenes[j + 1] || scenes[j]).dataset.sun, m = a + (b - a) * u;
+    const shown = t < .8 || i === N - 1 ? scenes[i] : scenes[i + 1];   // the clock shows the scene on screen
+    placeSun(m); clockEl.textContent = fmt(+shown.dataset.min); whereEl.textContent = shown.dataset.where;
+    horizon.style.opacity = .45 * (1 - seg(m, SET, SET + 60));         // no horizon line once the sun has set
+  }
+  function tick() {
+    cur += (goal - cur) * .14;                                     // light scrub smoothing
+    if (Math.abs(goal - cur) < 1e-4) cur = goal;
+    render(cur);
+    if (cur !== goal) requestAnimationFrame(tick); else ticking = false;
+  }
+  const kick = () => { goalFromScroll(); if (!ticking) { ticking = true; requestAnimationFrame(tick); } };
+  addEventListener('scroll', kick, { passive: true }); addEventListener('resize', kick);
+  goalFromScroll(); cur = goal; render(cur);
+})();
+</script>
+<script>
+// Waitlist form (SOCIAL §9; single opt-in): the function answers the same way for new and existing
+// addresses, so the page never reveals who is on the list.
+(() => {
+  const form = document.getElementById('waitlist'), err = form.querySelector('.error'), btn = form.querySelector('.btn');
+  const params = new URLSearchParams(location.search), ref = (params.get('ref') || '').toLowerCase();
+  if (/^[a-z0-9-]{1,24}$/.test(ref)) form.elements.ref.value = ref;          // channel tag from ?ref=
+  const say = text => { err.textContent = text; err.hidden = !text; };
+  if (params.has('joined')) form.classList.add('sent');                       // back from the no-JS fallback
+  if (params.has('invalid')) say("That email address doesn't look right. Check it and try again.");
+  if (params.has('limited')) say('Too many tries from here. Try again in an hour.');
+  form.addEventListener('submit', async event => {
+    event.preventDefault(); say(''); btn.disabled = true;
+    try {
+      const res = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+        email: form.elements.email.value.trim(), updates: form.elements.updates.checked,
+        ref: form.elements.ref.value || undefined, website: form.elements.website.value }) });
+      if (res.ok) form.classList.add('sent');
+      else if (res.status === 400) say("That email address doesn't look right. Check it and try again.");
+      else if (res.status === 429) say('Too many tries from here. Try again in an hour.');
+      else say("Something went wrong on our side. Try again in a minute.");
+    } catch { say("Couldn't reach Migi. Check your connection and try again."); }
+    btn.disabled = false;
+  });
+})();
+</script>
+</body></html>
