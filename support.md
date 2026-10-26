@@ -18,25 +18,35 @@ Install the Watch app from the Watch app on your iPhone. Then touch and hold you
 tap **Edit**, and choose Migi for a complication.
 
 **Japanese text has no sound.**
-Audio uses your iPhone's built-in Japanese voice. Go to **Settings → Accessibility → Spoken
-Content → Voices → Japanese** and download a voice.
+The audio comes with the app, so there's nothing to download. Turn the volume up; Migi plays
+even when your iPhone is on Silent. If one clip sounds wrong, open the word and tap
+**Report a problem with this item**.
 
-**I bought Plus on another device, or my family did.**
-Open **Settings → Plus → Restore purchases** in the app. Plus is shared with Family Sharing.
+**How does the free trial work?**
+Annual Migi Plus starts with a 14-day free trial, through the App Store. Cancel at least a day
+before it ends and you won't be charged.
+
+**I bought Plus on another device.**
+Open **Settings → Migi Plus → Restore purchases** in the app, signed in to the same Apple
+Account. Migi Plus isn't shared through Family Sharing.
 
 **How do I cancel Plus?**
-Subscriptions are managed by Apple: open the iOS **Settings** app → your name →
-**Subscriptions**. When Plus ends, nothing is deleted; Plus topics pause and come back if you
-subscribe again.
+Open **Settings → Migi Plus → Manage subscription** in the app, or the iOS **Settings** app →
+your name → **Subscriptions**. When Plus ends, nothing is deleted: the app, widgets and Watch
+ask you to subscribe, and your progress is all there when you do.
 
 **My progress didn't come across to my new phone.**
-Check that you're signed in to iCloud with the same Apple Account and that iCloud is on for
-Migi (iOS Settings → your name → iCloud). Sync can take a few minutes on Wi-Fi.
+Sign in the way you did before (Apple, Google or email, with the same address). Your progress
+belongs to your Migi account and comes across once you're online.
 
-**How do I switch off usage statistics or delete my data?**
-In the app: **Settings → Share anonymous stats**, and **Settings → Delete my data**. See the
-[Privacy Policy](privacy.md).
+**Does Migi work offline?**
+Yes, after your first sign-in. Anything you do offline is kept on your iPhone and syncs when
+you're back online.
+
+**How do I switch off usage stats or delete my account?**
+In the app: **Settings → Share usage stats**, and **Settings → Account → Delete account**, which
+deletes your account and your progress. See the [Privacy Policy](privacy.md).
 
 **I think some Japanese is wrong.**
-Open the item and tap **Report a problem**. It's taken off your widgets straight away while we
-check it. Thank you; this really helps.
+Open the word and tap **Report a problem with this item**. It's kept off your widgets and out of
+your quizzes while we check it. Thank you; this really helps.
