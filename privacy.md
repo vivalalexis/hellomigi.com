@@ -5,7 +5,7 @@ title: Privacy Policy
 
 # Migi Privacy Policy
 
-Last updated 7 November 2026
+Last updated 8 November 2026
 
 Migi ("Migi: Everyday Japanese" on the App Store) helps you pick up everyday Japanese on your
 iPhone, its widgets and your Apple Watch. You sign in so your progress follows you to any
@@ -14,7 +14,7 @@ and the choices you have.
 
 ## Who we are
 
-Migi is made by Trisha Kuek, an individual developer based in Australia ("we", "us"). For
+Migi is made by Shuyan Trisha Kuek, an individual developer based in Australia ("we", "us"). For
 anything about privacy, email **tk@hellomigi.com**.
 
 ## The short version

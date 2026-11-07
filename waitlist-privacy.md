@@ -13,7 +13,7 @@ launches. This notice covers only that list. The Migi app has its own
 
 ## Who we are
 
-Migi is made by Trisha Kuek, an individual developer based in Australia ("we", "us"). For
+Migi is made by Shuyan Trisha Kuek, an individual developer based in Australia ("we", "us"). For
 anything about privacy, email **tk@hellomigi.com**.
 
 ## Separate from Migi accounts
