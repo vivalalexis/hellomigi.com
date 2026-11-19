@@ -5,7 +5,7 @@ title: Privacy Policy
 
 # Migi Privacy Policy
 
-Last updated 8 November 2026
+Last updated 19 November 2026
 
 Migi ("Migi: Everyday Japanese" on the App Store) helps you pick up everyday Japanese on your
 iPhone, its widgets and your Apple Watch. You sign in so your progress follows you to any
@@ -42,8 +42,8 @@ anything about privacy, email **tk@hellomigi.com**.
   to your **profile photo**, which are stored with your account. Migi doesn't use them today; we
   may use them later to personalise your profile in the app and the emails we send you. Sign in
   with Apple asks only for your email address.
-- **Your Migi Plus plan:** which plan you have (annual, monthly or lifetime) and when it renews
-  or ends.
+- **Your Migi Plus plan:** which plan you have (annual, monthly, lifetime or a 30-day pass) and
+  when it renews or ends.
 - **Whether you've asked for news and tips by email**, and when you last changed that choice.
 - **Sign-in records:** our sign-in service (Supabase) keeps a security log of sign-ins and
   sign-outs, including the IP address each came from.
@@ -110,9 +110,9 @@ or your device's ID.
 **How it's linked to you:** the statistics are tied to your account ID after it has been
 scrambled (hashed) with a fixed secret value on your iPhone. Our analytics provider,
 [TelemetryDeck](https://telemetrydeck.com), scrambles it again with its own secret on its
-servers, so neither of us can turn it back into your account ID. Only the iPhone app sends
-statistics; what widgets and the Watch record is sent by the iPhone app. Nothing is sent before
-you sign in or while you're signed out.
+servers, so neither of us can turn it back into your account ID. On your devices, only the
+iPhone app sends statistics; what widgets and the Watch record is sent by the iPhone app.
+Nothing is sent before you sign in or while you're signed out.
 
 **Your choice:**
 
@@ -151,13 +151,34 @@ Analytics & Improvements), Apple may share crash reports with us. We use them on
   Japanese speech model to your iPhone the first time. Only the result is kept, as above.
 - **Your sign-in** is kept in your iPhone's Keychain.
 
+## On our website
+
+hellomigi.com uses TelemetryDeck's web script on its home page. Each time the page loads, the
+script sends TelemetryDeck:
+
+- the page address, including any campaign tags in the link (such as "ref");
+- the address of the site you came from, if any;
+- your browser's language setting;
+- the website's ID in TelemetryDeck, the script's version number and a flag that marks test
+  traffic.
+
+Like any web request, it also carries your IP address and your browser's user agent (a line of
+text that names the browser and operating system). The script sets no cookies and stores nothing
+on your device.
+
+TelemetryDeck says it uses the IP address and user agent to work out the browser, operating
+system, device type and country. It also says it counts visitors by a scrambled code (a SHA-256
+hash) made from the IP address, the website's ID in TelemetryDeck, the user agent and a value that
+changes every day, so a visitor can't be recognised from one day to the next or across sites.
+TelemetryDeck says it does no fingerprinting.
+
 ## Who helps us
 
 | Who | What | Where | Why |
 |---|---|---|---|
 | Supabase | Your account, sign-in log, learning progress, settings and plan | Sydney, Australia | Our database and sign-in service |
 | Resend | Your email address and the emails we send you | Tokyo, Japan (Resend is a US company) | Sending sign-in codes, and news and tips if you asked for them |
-| TelemetryDeck GmbH | Usage statistics, if they're on | Germany (EU) | Analytics |
+| TelemetryDeck GmbH | Usage statistics from the app, if they're on; page views on hellomigi.com | Germany (EU) | Analytics |
 | Apple | Sign in with Apple; purchases; crash reports; Say it's speech model | Apple's own systems | Under Apple's privacy policy |
 | Google | Sign in with Google | Google's own systems | Under Google's privacy policy |
 
@@ -191,6 +212,7 @@ In version 1.0, Migi isn't sold in App Store countries in the EU, the EEA or the
   months; TelemetryDeck moves older statistics to storage we can't view, rather than deleting
   them on a set date. Because the account ID is scrambled twice, we can't pick out one person's
   statistics, so they aren't removed when you delete your account.
+- **Website page views:** TelemetryDeck keeps them in the same way as usage statistics, above.
 
 ## Deleting your account
 
@@ -209,6 +231,7 @@ the same screen offers **Manage subscription** for that.
 - **Usage statistics:** your **consent** where the EU/EEA rules apply; elsewhere, our
   **legitimate interest** in understanding and improving the app, and you can object at any time
   by switching statistics off.
+- **Website page views:** our legitimate interest in knowing how people find and use the website.
 
 ## Your rights
 

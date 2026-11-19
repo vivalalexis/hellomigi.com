@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Migi · Everyday Japanese on your Lock Screen, widgets and Apple Watch</title>
-<meta name="description" content="Everyday Japanese words and phrases on your Lock Screen, widgets and Apple Watch, with quick one-tap checks. Coming to iPhone and Apple Watch.">
+<meta name="description" content="Everyday Japanese words and phrases on your Lock Screen, widgets and Apple Watch, with quick one-tap checks. Now on the App Store for iPhone and Apple Watch.">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://hellomigi.com/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://hellomigi.com/">
 <meta property="og:title" content="Migi: Japanese that shows up where you already look">
-<meta property="og:description" content="Everyday Japanese on your Lock Screen, widgets and Apple Watch. Coming to iPhone and Apple Watch.">
-<meta property="og:image" content="https://hellomigi.com/assets/og.png"><meta name="twitter:card" content="summary_large_image">
+<meta property="og:description" content="Everyday Japanese on your Lock Screen, widgets and Apple Watch. Now on the App Store for iPhone and Apple Watch.">
+<meta property="og:image" content="https://hellomigi.com/assets/share-2026-11.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Migi: Japanese where you already look. A Migi widget shows わかる, wakaru, to understand, beside the Migi app icon."><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/schibsted-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Migi","alternateName":"Migi: Everyday Japanese","operatingSystem":"iOS, watchOS","applicationCategory":"EducationalApplication","url":"https://hellomigi.com/","description":"Everyday Japanese words and phrases on your Lock Screen, widgets and Apple Watch, with quick one-tap checks."}</script>
+<script async src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js" data-app-id="0E30962D-BEA7-4E25-90BF-AA3CBC49B39E"></script>
 <link rel="stylesheet" href="assets/site.css">
 <script>
   // Pinned scroll story only with JS and without Reduce Motion; otherwise the scenes sit in normal flow.
@@ -29,7 +31,8 @@
   .foot .wm { height: 13px; width: auto; }
   h1 { font-size: clamp(36px, 5.6vw, 64px); line-height: 1.03; letter-spacing: -.025em; font-weight: 600; max-width: 15ch; margin-top: var(--s5); }
   .sub { font-size: 19px; color: var(--ink-2); max-width: 40ch; }
-  .jump { font-size: 15px; font-weight: 500; color: var(--ink); }
+  .store { justify-self: start; margin-top: var(--s2); }   /* Apple's badge, unmodified: 48 px high, 12 px+ clear space */
+  .store img { display: block; height: 48px; width: auto; }
 
   /* The day */
   .day { --n: 5; position: relative; }
@@ -110,13 +113,10 @@
 
   .device-shadow { filter: drop-shadow(0 28px 36px rgba(14,20,18,.26)); }
 
-  /* Waitlist at the end */
-  .join { padding: var(--s8) 0 var(--s6); display: grid; gap: var(--s5); }
-  .join h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -.02em; line-height: 1.08; max-width: 18ch; }
-  .thanks { display: none; font-size: 17px; }
-  .form.sent .thanks { display: block; } .form.sent .field, .form.sent .check, .form.sent .error { display: none; }
-  .error { color: var(--dot); }
-  .btn:disabled { opacity: .6; }
+  /* Closing line at the end */
+  .end { padding: var(--s8) 0 var(--s6); display: grid; gap: var(--s5); }
+  .end h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -.02em; line-height: 1.08; max-width: 18ch; }
+  .end a { font-weight: 500; color: var(--ink); }
 
   @media (min-width: 900px) {
     .hero { grid-template-columns: minmax(0, 1fr) auto; align-items: end; padding: var(--s6) 0 var(--s5); }
@@ -129,7 +129,7 @@
     .clock small { display: block; margin: var(--s1) 0 0; font-size: 17px; }
     .iphone { width: 310px; } .iphone .scr { height: 350px; }
     .aw { width: 280px; } .band { width: 200px; }
-    .join { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+    .end { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
   }
   @media (max-width: 899px) {
     /* A: small + medium side by side, large below */
@@ -148,7 +148,7 @@
     <h1>Japanese that shows up where you already look.</h1>
     <div style="display:grid;gap:var(--s3)">
       <p class="sub">Everyday words and phrases on your Lock Screen, widgets and Apple Watch. Glance at them a few times a day. Now and then, one tap checks what's sticking.</p>
-      <a class="jump" href="#join">Get one email when Migi launches ↓</a>
+      <a class="store" href="https://apps.apple.com/app/apple-store/id6818947663?pt=128554350&amp;ct=site&amp;mt=8"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="144" height="48"></a>
     </div>
   </header>
 </div>
@@ -193,7 +193,7 @@
 
     <article class="scene" data-min="1260" data-sun="1240" data-where="On the couch">
       <div class="cap"><span class="when">21:00 · On the couch</span><b>A one-tap check</b>
-        <p>Seeing a word helps. Picking its meaning from memory helps more: quick checks like this are retrieval practice.</p></div>
+        <p>Tap the meaning right on the widget. Each answer tells Migi which words have stuck.</p></div>
       <div class="mock device-shadow"><div class="iphone home"><div class="scr">
         <div class="island"></div>
         <div class="status"><span>21:00</span><span><svg viewBox="0 0 64 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="6" width="3" height="6" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/><rect x="38" y="1" width="22" height="10" rx="3" fill="none" stroke="#fff" stroke-width="1.2"/><rect x="40" y="3" width="6" height="6" rx="1.5"/><rect x="61" y="4" width="2" height="4" rx="1"/></svg></span></div>
@@ -208,21 +208,18 @@
 </section>
 
 <div class="wrap">
-  <section class="join" id="join">
-    <h2>Get one email when Migi launches</h2>
-    <form class="form" id="waitlist" action="https://npsybdtpcyjynzvjjqnk.supabase.co/functions/v1/waitlist" method="post">
-      <p class="small">We'll send it when Migi is on the App Store, with the link.</p>
-      <div class="field"><input type="email" name="email" aria-label="Email address" placeholder="you@example.com" autocomplete="email" required><button class="btn">Notify me</button></div>
-      <label class="check"><input type="checkbox" name="updates"> Also send me occasional updates (a few a year).</label>
-      <input class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" name="website">
-      <input type="hidden" name="ref">
-      <p class="error small" role="alert" hidden></p>
-      <p class="thanks" role="status">You're on the list. We'll email you once, when Migi is on the App Store.</p>
-      <p class="small">Unsubscribe any time, in one click. Your email is only used for this. <a href="/waitlist-privacy/">Privacy notice</a></p>
-      <p class="small">Coming to iPhone and Apple Watch.</p>
-    </form>
+  <section class="end">
+    <h2>Tomorrow starts with a word on your Lock Screen.</h2>
+    <div style="display:grid;gap:var(--s3)">
+      <a href="https://apps.apple.com/app/apple-store/id6818947663?pt=128554350&amp;ct=site&amp;mt=8">Get Migi on the App Store for iPhone and Apple Watch</a>
+    </div>
   </section>
-  <footer class="foot"><span><img class="wm lt" src="assets/wordmark-light.png" alt="Migi" width="287" height="49"><img class="wm dk" src="assets/wordmark-dark.png" alt="Migi" width="287" height="49"></span><span class="small">© 2026 Migi</span></footer>
+  <footer class="foot">
+    <span><img class="wm lt" src="assets/wordmark-light.png" alt="Migi" width="287" height="49"><img class="wm dk" src="assets/wordmark-dark.png" alt="Migi" width="287" height="49"></span>
+    <nav class="small" aria-label="Footer"><a href="/privacy/">Privacy</a><a href="/support/">Support</a></nav>
+    <span class="small">© 2026 Migi</span>
+    <p class="small credit">Apple, the Apple logo, iPhone and Apple Watch are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc.</p>
+  </footer>
 </div>
 
 <script>
@@ -271,32 +268,6 @@
   const kick = () => { goalFromScroll(); if (!ticking) { ticking = true; requestAnimationFrame(tick); } };
   addEventListener('scroll', kick, { passive: true }); addEventListener('resize', kick);
   goalFromScroll(); cur = goal; render(cur);
-})();
-</script>
-<script>
-// Waitlist form (SOCIAL §9; single opt-in): the function answers the same way for new and existing
-// addresses, so the page never reveals who is on the list.
-(() => {
-  const form = document.getElementById('waitlist'), err = form.querySelector('.error'), btn = form.querySelector('.btn');
-  const params = new URLSearchParams(location.search), ref = (params.get('ref') || '').toLowerCase();
-  if (/^[a-z0-9-]{1,24}$/.test(ref)) form.elements.ref.value = ref;          // channel tag from ?ref=
-  const say = text => { err.textContent = text; err.hidden = !text; };
-  if (params.has('joined')) form.classList.add('sent');                       // back from the no-JS fallback
-  if (params.has('invalid')) say("That email address doesn't look right. Check it and try again.");
-  if (params.has('limited')) say('Too many tries from here. Try again in an hour.');
-  form.addEventListener('submit', async event => {
-    event.preventDefault(); say(''); btn.disabled = true;
-    try {
-      const res = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
-        email: form.elements.email.value.trim(), updates: form.elements.updates.checked,
-        ref: form.elements.ref.value || undefined, website: form.elements.website.value }) });
-      if (res.ok) form.classList.add('sent');
-      else if (res.status === 400) say("That email address doesn't look right. Check it and try again.");
-      else if (res.status === 429) say('Too many tries from here. Try again in an hour.');
-      else say("Something went wrong on our side. Try again in a minute.");
-    } catch { say("Couldn't reach Migi. Check your connection and try again."); }
-    btn.disabled = false;
-  });
 })();
 </script>
 </body></html>
