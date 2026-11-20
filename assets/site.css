@@ -1,27 +1,21 @@
-/* hellomigi.com: Migi direction M tokens (DESIGN-BRIEF; Trish, 15 Oct 2026). */
+/* hellomigi.com: Migi direction M tokens (DESIGN-BRIEF; Trish, 15 Oct 2026). Page: G1b (Trish, 19 Nov 2026),
+   ported from build/site-probes/explore/r3/g1b.html. Only index.html loads this file. */
 @font-face { font-family: "Schibsted Grotesk"; src: url(fonts/schibsted-grotesk.woff2) format("woff2"); font-weight: 400 900; font-display: swap; }  /* OFL, Latin subset */
 
 :root {
   --paper: #F1F0EC; --ink: #1A2420; --ink-2: #5A5F5C; --dot: #C92F1C; --green: #4DB091;
   --rule: color-mix(in oklch, var(--ink) 18%, transparent);
-  --glass: color-mix(in oklch, white 55%, transparent);
-  --glass-edge: color-mix(in oklch, white 80%, transparent);
   --sans: "Schibsted Grotesk", system-ui, sans-serif;
   --jp: "BIZ UD Mincho", "Hiragino Mincho ProN", serif;
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px;
+  --wall: radial-gradient(120% 80% at 70% 10%, #4B5D55, #24302B 60%, #18201D); --wall-edge: 0 0 0 1px var(--rule);   /* the 7:40 wallpaper */
   color-scheme: light;
-}
-:root[data-theme="dark"] {
-  --paper: #1A2420; --ink: #ECEDEA; --ink-2: #A9AFAB; --dot: #E0503B;
-  --glass: color-mix(in oklch, white 8%, transparent);
-  --glass-edge: color-mix(in oklch, white 16%, transparent);
-  color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #1A2420; --ink: #ECEDEA; --ink-2: #A9AFAB; --dot: #E0503B;
-    --glass: color-mix(in oklch, white 8%, transparent);
-    --glass-edge: color-mix(in oklch, white 16%, transparent);
+    /* lighter, with a faint edge, so its bottom separates from the dark page (1.5:1 fill, 1.9:1 edge); white is 5.8:1 at its lightest */
+    --wall: radial-gradient(120% 80% at 70% 10%, #526459, #3E4F47 60%, #33423B); --wall-edge: 0 0 0 1px rgba(255,255,255,.2);
     color-scheme: dark;
   }
 }
@@ -35,63 +29,128 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opa
   background-image: radial-gradient(var(--ink) .6px, transparent .7px); background-size: 3px 3px; }
 
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--s4); position: relative; }
-.wordmark { font-weight: 500; letter-spacing: .32em; font-size: 15px; display: inline-flex; align-items: center; }
-.wordmark .disc { width: 14px; height: 14px; margin-left: .15em; }
-.jp { font-family: var(--jp); font-weight: 400; }
-.meaning { font-style: italic; } /* italic only at >=17px (DESIGN-BRIEF Italics) */
 .small { font-size: 14px; color: var(--ink-2); }
-.rule { border: 0; border-top: 1px solid var(--rule); }
-
-/* Halftone disc: dots on a 15deg screen, clipped to a circle */
-.disc { display: inline-block; border-radius: 50%; aspect-ratio: 1;
-  background-image: radial-gradient(circle, var(--dot) 34%, transparent 37%);
-  background-size: 6px 6px; transform: rotate(15deg); }
-.disc.big { background-size: 14px 14px; }
-
-/* Glass card (widget surface) */
-.glass { background: var(--glass); border: 1px solid var(--glass-edge); border-radius: 22px;
-  backdrop-filter: blur(18px) saturate(1.1); -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 1px 0 var(--glass-edge) inset, 0 18px 40px -24px color-mix(in oklch, var(--ink) 40%, transparent); }
-
-/* Widgets at iPhone point sizes (6.1"): small 158, medium 338x158 */
-.w-small { width: 158px; height: 158px; padding: 14px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; flex: none; }
-.w-medium { width: 338px; max-width: 100%; height: 158px; padding: 16px; position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: center; flex: none; }
-.w-word { font-family: var(--jp); font-size: 32px; line-height: 1.15; }
-.w-roma { font-size: 13px; color: var(--ink-2); }
-.w-mean { font-size: 17px; font-style: italic; }
-.w-dot { position: absolute; top: 14px; right: 14px; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-.w-ans { display: grid; gap: 6px; }
-.w-ans span { font-size: 15px; padding: 7px 10px; border-radius: 12px; background: color-mix(in oklch, var(--ink) 7%, transparent); }
-
-/* Phone (lock screen) */
-.phone { width: 280px; aspect-ratio: 390/844; border-radius: 44px; padding: 9px; background: #0E1412; flex: none;
-  box-shadow: 0 40px 80px -40px rgba(14,20,18,.55); }
-.screen { width: 100%; height: 100%; border-radius: 36px; overflow: hidden; position: relative;
-  background: linear-gradient(180deg, #E9E7E0, #DAD7CE); color: #1A2420; display: flex; flex-direction: column; align-items: center; padding-top: 52px; }
-:root[data-theme="dark"] .screen { background: linear-gradient(180deg, #23302B, #141B18); color: #ECEDEA; }
-.ls-date { font-size: 14px; font-weight: 500; opacity: .75; }
-.ls-time { font-size: 76px; font-weight: 600; letter-spacing: -.02em; line-height: 1; margin-top: 2px; }
-.ls-acc { margin-top: 12px; text-align: center; font-size: 13px; line-height: 1.3; }
-.ls-acc .jp { font-size: 19px; display: block; }
-.ls-sun { position: absolute; bottom: -60px; right: -50px; width: 220px; }
-
-/* Watch */
-.watch { width: 160px; aspect-ratio: 396/484; border-radius: 42px; background: #0E1412; padding: 9px; flex: none;
-  box-shadow: 0 30px 60px -30px rgba(14,20,18,.6); }
-.watch .face { width: 100%; height: 100%; border-radius: 34px; background: #050807; color: #ECEDEA; overflow: hidden;
-  display: flex; flex-direction: column; justify-content: center; padding: 12px; gap: 4px; }
-.watch .jp { font-size: 25px; white-space: nowrap; line-height: 1.15; }
-.watch .m { font-size: 14px; } /* upright on the Watch */
-.watch .r { font-size: 12px; color: #A9AFAB; }
-
 .small a { color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Light assets in light mode, dark assets in dark mode (icon, wordmark, widgets, sun) */
+.dk { display: none !important; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .lt { display: none !important; } :root:not([data-theme="light"]) .dk { display: block !important; } }
+
+a { color: var(--ink); } a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; border-radius: 6px; }
+.icon { border-radius: 22.37%; box-shadow: 0 0 0 1px var(--rule); }   /* iOS draws icons with ~22% rounded corners */
+
+/* Top bar: the store lock-up (app icon, name, Apple's badge). Not sticky, so it never covers content. */
+.appbar { border-bottom: 1px solid var(--rule); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); min-height: 64px; padding-block: var(--s3); }
+.app { display: flex; align-items: center; gap: var(--s3); min-width: 0; }
+.app .icon { width: 40px; height: 40px; flex: none; }
+.appname { font-weight: 600; letter-spacing: -.01em; line-height: 1.2; font-size: 15px; }
+.badge { display: block; width: fit-content; padding: 2px 0; }   /* 44 px tap target around the badge */
+.badge img { width: auto; height: 40px; }   /* 40 px, Apple's minimum; 12 px+ clear space from the bar's padding and gap */
+
+.top { display: grid; gap: var(--s3); padding-top: var(--s6); padding-bottom: var(--s5); }
+.top h1 { font-size: clamp(36px, 10vw, 60px); font-weight: 600; letter-spacing: -.03em; line-height: 1.03; text-wrap: balance; }
+.top .ln { font-size: 18px; color: var(--ink-2); text-wrap: pretty; }   /* no lone last word on a phone */
+
+/* Drawn Lock Screen and notification (EXPERIENCE §3.4; board row 3, Trish, 20 Nov 2026) */
+.lock { container-type: inline-size; aspect-ratio: 1000 / 979; border-radius: 26px; box-shadow: var(--wall-edge); color: #F4F5F2; text-align: center; font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+  background: var(--wall); }
+.lock .d { font-size: 6.4cqi; font-weight: 600; opacity: .9; padding-top: 10cqi; }
+.lock .t { font-size: 31cqi; font-weight: 700; line-height: 1; letter-spacing: -.02em; margin-top: 1cqi; font-family: -apple-system, "SF Pro Display", system-ui, sans-serif; }
+.lock .acc { width: 72cqi; margin: 6cqi auto 0; text-align: left; line-height: 1.2; }   /* as the app draws it (ExposureWidget, accessoryRectangular): no plate, leading */
+.lock .acc .h { font-size: 7.4cqi; font-weight: 600; } .lock .acc .c, .lock .acc .c2 { font-size: max(11px, 5.2cqi); }   /* never under 11 px; the box keeps its 1000:979 */
+.lock .acc .c2 { opacity: .85; }   /* secondary: 5.2:1 light, 4.7:1 dark at the wallpaper's lightest */
+/* An iOS banner on a strip of the same wallpaper: icon at the leading edge, title and body beside it, "now" on
+   the title's line at the trailing edge. Sizes step up with the banner's width (container = .nbox). Below
+   216 px the title can't hold one line, so ありがとう sits over arigatō and the separator, still in the text, isn't
+   drawn: no line starts or ends with the dot, and the Japanese never breaks. */
+.notif { padding: 8px; border-radius: 20px; display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 6px; align-items: baseline; width: 100%;
+  font-family: -apple-system, "SF Pro Text", system-ui, sans-serif; font-size: 14px; line-height: 1.3; color: var(--ink); background: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 12px 28px -14px rgba(0,0,0,.4); }
+.notif .icon { width: 30px; height: 30px; box-shadow: none; align-self: start; } .notif b { font-weight: 600; display: block; word-break: keep-all; }
+.notif .sep { display: block; height: 0; overflow: hidden; }
+.notif .now { font-size: 13px; color: #6C6C70; }   /* 5.2:1 on white */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .notif { background: #1C1C1E; box-shadow: inset 0 0 0 1px rgba(255,255,255,.1), 0 12px 28px -14px rgba(0,0,0,.7); }
+  :root:not([data-theme="light"]) .notif .now { color: #A1A1A6; } }   /* 7.3:1 on #1C1C1E */
+@container (min-width: 216px) { .notif { gap: 7px; grid-template-columns: 36px minmax(0, 1fr) auto; } .notif .icon { width: 36px; height: 36px; }
+  .notif b { white-space: nowrap; } .notif .sep { display: inline; height: auto; } }
+@container (min-width: 244px) { .notif { padding: 12px; gap: 8px; font-size: 15px; grid-template-columns: 38px minmax(0, 1fr) auto; } .notif .icon { width: 38px; height: 38px; } }
+@container (min-width: 270px) { .notif { padding: 14px; gap: 10px; } }
+.face { border-radius: 22%/18%; }
+
+/* The day, phone: time runs down the page. Every sun sits on one line on the left; the script draws that
+   line from the first sun to the last, broken around each sun, once; nothing moves. */
+.day { position: relative; padding: 0 var(--s4); }
+.day .arc { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.day .arc .a { fill: none; stroke: var(--ink); stroke-width: 1.5; opacity: .45; }
+.moments { list-style: none; padding: 0; margin: 0; position: relative; }
+.m { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: var(--s3); padding: var(--s5) 0; position: relative; }
+.m.am { padding-block: var(--s3); }
+.m .gut { position: relative; }
+.m .msun { position: absolute; width: 32px; top: -4px; left: 0; }   /* centred on the time's line */
+.m .body { display: grid; gap: var(--s2); justify-items: start; align-content: start; }
+.when time { font-size: 24px; font-weight: 600; letter-spacing: -.01em; line-height: 1; }
+.when span { font-size: 15px; color: var(--ink-2); margin-left: 6px; }
+.m h2 { font-size: 18px; font-weight: 600; letter-spacing: -.01em; line-height: 1.3; }
+.m .lock { width: min(270px, 100%); } .m .face { width: 208px; }   /* phone: the 46 mm Watch at true scale */
+.m .sm { width: min(158px, 100%); border-radius: 13.9%; box-shadow: 0 0 0 1px var(--rule); }   /* 8:05 and 21:00 small widgets: phone at true scale, 158 pt (desktop below); corner 22 of 158 pt */
+.m .nbox { width: min(270px, 100%); container-type: inline-size;   /* on a wrapper: containment on .m would cancel its subgrid */
+  display: flex; align-items: center; padding: 40px 12px; border-radius: 26px; background: var(--wall); box-shadow: var(--wall-edge); }   /* phone: as wide as the Lock Screen, 40 px of wallpaper above and below the banner */
+
+/* Closing: where the day ends, one text link (never a second badge) */
+.close { display: grid; gap: var(--s3); justify-items: start; padding: var(--s5) 0 var(--s6) 44px; position: relative; }
+.close h2 { font-size: clamp(26px, 7vw, 36px); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; max-width: 16ch; }
+.get { display: inline-flex; align-items: center; gap: var(--s3); font-size: 18px; font-weight: 500; text-decoration-thickness: 1.5px; text-underline-offset: 5px; min-height: 44px; }
+.get .icon { width: 44px; height: 44px; flex: none; }
+
+/* Facts: a heading, then a plain list, one item per line; side by side from 1000 px */
+.facts { border-top: 1px solid var(--rule); padding-block: var(--s4) var(--s5); display: grid; gap: var(--s5) var(--s9); font-size: 15px; line-height: 1.45; }
+.facts ul { list-style: none; padding: 0; margin-top: var(--s1); display: grid; gap: var(--s1); }   /* a wrapped item still reads as its own line */
+.facts h2 { font-size: 15px; font-weight: 600; letter-spacing: 0; }
 
 .foot { padding: var(--s7) 0 var(--s6); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s3) var(--s5);
   border-top: 1px solid var(--rule); }
+.foot .wm { height: 18px; width: auto; }   /* the halftone disc stays a disc, not a smudge */
 .foot nav { display: flex; gap: var(--s5); }
 .foot nav a { display: inline-block; padding: var(--s3) 0; }   /* 44 px tap height */
 .foot .credit { flex-basis: 100%; }   /* always its own row under the links */
 
+@media (max-width: 380px) { .appname { font-size: 14px; max-width: 9.5em; } }
+
+/* Desktop and tablet landscape: five columns, one sun per column on its top edge. How much of the sun has
+   cleared that edge is the time of day: low at 7:40, nearly whole by 8:36, sinking at 18:10, gone at 21:00
+   (sunset 18:50). No path, axis or scale. --c is the sun's centre above the band's bottom edge. */
+@media (min-width: 1000px) {
+  .wrap { max-width: 1600px; padding-inline: var(--s5); }   /* one left and right edge with the five columns */
+  .facts { grid-template-columns: repeat(2, max-content); }
+  .app .icon { width: 44px; height: 44px; } .appname { font-size: 17px; }
+  .badge img { height: 44px; }
+  .top { padding-bottom: var(--s4); }
+  .top h1 { max-width: 22ch; }
+  .day { max-width: 1600px; margin: 0 auto; padding: 0 var(--s5); --band: 80px; --sun: 88px; }
+  .day .arc { display: none; }
+  .moments { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(4, auto); column-gap: var(--s4); }
+  /* subgrid: sun band, time, title, surface each line up across the five columns */
+  .m, .m.am, .m.noon { grid-template-columns: none; padding: 0; grid-row: span 4; grid-template-rows: subgrid; row-gap: var(--s2); justify-items: start; align-items: start; }
+  .m .body { display: contents; }
+  .m .gut { width: 100%; height: var(--band); margin-bottom: var(--s2); clip-path: inset(-60px -60px 0); }   /* cut at the column's top edge */
+  .m .msun { width: var(--sun); top: auto; left: calc(var(--rw, 100%) / 2); margin-left: calc(var(--sun) / -2); bottom: calc(var(--c) - var(--sun) / 2); }   /* over its render's centre */
+  .m:nth-child(1) { --c: -6px; }   /* 7:40 */
+  .m:nth-child(2) { --c: 12px; --rw: calc(97.9% * 316 / 315); }   /* 8:05; --rw is the render's width, as set below */
+  .m:nth-child(3) { --c: 30px; --rw: calc(97.9% * 416 / 496); }   /* 8:36 */
+  .m:nth-child(4) { --c: -12px; }  /* 18:10 */
+  .m:nth-child(5) .msun { display: none; }
+  .m .lock, .m .notif { width: 100%; max-width: none; }
+  .m .nbox { width: 100%; align-self: stretch; padding: 0 8px; }   /* as tall as the band, banner centred */
+  /* 7:40, 8:05, 8:36 and 21:00 read as one band: the small widgets and the Watch face take the Lock Screen's
+     height, which its aspect-ratio makes 0.979 of the column. Widget 316:315, face 416:496, all inside the column. */
+  .m .sm { width: calc(97.9% * 316 / 315); } .m .face { width: calc(97.9% * 416 / 496); }
+  .close { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) var(--s6); padding: var(--s7) 0 var(--s6); }
+  .close h2 { font-size: 32px; max-width: none; }
+}
+
+@media (min-width: 1000px) and (max-width: 1039px) { .m h2 { font-size: 17px; } }   /* "Optional notifications" is 181 px at 18 px; the column reaches that near 1016 */
+@media (min-width: 1600px) { .m .nbox { padding: 0 12px; } }   /* the panel's full 12 px inset once the columns stop growing */
+
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
-.w-small .w-word { font-size: 26px; white-space: nowrap; } /* long-words rule: shrink, never mid-word wrap */
-.w-medium .w-word { font-size: 28px; white-space: nowrap; }

@@ -159,8 +159,7 @@ script sends TelemetryDeck:
 - the page address, including any campaign tags in the link (such as "ref");
 - the address of the site you came from, if any;
 - your browser's language setting;
-- the website's ID in TelemetryDeck, the script's version number and a flag that marks test
-  traffic.
+- the website's ID in TelemetryDeck and the script's version number.
 
 Like any web request, it also carries your IP address and your browser's user agent (a line of
 text that names the browser and operating system). The script sets no cookies and stores nothing
@@ -170,7 +169,7 @@ TelemetryDeck says it uses the IP address and user agent to work out the browser
 system, device type and country. It also says it counts visitors by a scrambled code (a SHA-256
 hash) made from the IP address, the website's ID in TelemetryDeck, the user agent and a value that
 changes every day, so a visitor can't be recognised from one day to the next or across sites.
-TelemetryDeck says it does no fingerprinting.
+TelemetryDeck says it never stores IP addresses and does no fingerprinting.
 
 ## Who helps us
 
@@ -178,7 +177,7 @@ TelemetryDeck says it does no fingerprinting.
 |---|---|---|---|
 | Supabase | Your account, sign-in log, learning progress, settings and plan | Sydney, Australia | Our database and sign-in service |
 | Resend | Your email address and the emails we send you | Tokyo, Japan (Resend is a US company) | Sending sign-in codes, and news and tips if you asked for them |
-| TelemetryDeck GmbH | Usage statistics from the app, if they're on; page views on hellomigi.com | Germany (EU) | Analytics |
+| TelemetryDeck GmbH | Usage statistics from the app, if they're on; page views on hellomigi.com | EU (Germany and the Netherlands) | Analytics |
 | Apple | Sign in with Apple; purchases; crash reports; Say it's speech model | Apple's own systems | Under Apple's privacy policy |
 | Google | Sign in with Google | Google's own systems | Under Google's privacy policy |
 
@@ -191,8 +190,8 @@ US state privacy laws.
 ## International transfers
 
 Your account and progress stay in Australia. Your email address is processed in Japan, and by a
-US company, when we send you email. Usage statistics are processed in the EU. Apple and Google
-handle their sign-in services under their own safeguards.
+US company, when we send you email. Usage statistics and website page views are processed in the
+EU. Apple and Google handle their sign-in services under their own safeguards.
 
 In version 1.0, Migi isn't sold in App Store countries in the EU, the EEA or the UK.
 
